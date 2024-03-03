@@ -17,13 +17,12 @@ without authentication.*
 
 	```
 	{
-		...
 		"STATUS": {
-			"RESULT": String,
-			"DETAIL": String
+			"RESULT": "string",
+			"DETAIL": "string"
 		},
-		"URI": String,
-		"TIME": String
+		"URI": "string",
+		"TIME": "string"
 	}
 	```
 	API does not seem to be fully restful, and doesn't apply proper status codes in responses. Verify request's result from the `status` object. Result codes included where applicable.
@@ -54,8 +53,8 @@ ST: urn:schemas-kinoma-com:device:shell:1
 #### Body
 ```
 {
-	"DEVICE_NAME": String,
-	"DEVICE_ID": String
+	"DEVICE_NAME": "string",
+	"DEVICE_ID": "string"
 }
 ```
 
@@ -63,10 +62,9 @@ ST: urn:schemas-kinoma-com:device:shell:1
 ```
 {
 	"ITEM": {
-		"PAIRING_REQ_TOKEN": Integer,
-		"CHALLENGE_TYPE": Integer
+		"PAIRING_REQ_TOKEN": 123,
+		"CHALLENGE_TYPE": 123
 	},
-	...
 }
 ```
 
@@ -82,10 +80,10 @@ Save `DEVICE_ID`, you'll need it for the challenge or to cancel pairing.
 #### Body
 ```
 {
-  "DEVICE_ID": String,
-  "CHALLENGE_TYPE": Integer,
-  "RESPONSE_VALUE": String,
-  "PAIRING_REQ_TOKEN": Integer
+  "DEVICE_ID": "string",
+  "CHALLENGE_TYPE": 123,
+  "RESPONSE_VALUE": "string",
+  "PAIRING_REQ_TOKEN": 123
 }
 ```
 
@@ -93,9 +91,8 @@ Save `DEVICE_ID`, you'll need it for the challenge or to cancel pairing.
 ```
 {
 	"ITEM": {
-		"AUTH_TOKEN": String
+		"AUTH_TOKEN": "string"
 	},
-	...
 }
 ```
 
@@ -112,10 +109,10 @@ Save `DEVICE_ID`, you'll need it for the challenge or to cancel pairing.
 #### Body
 ```
 {
-  "DEVICE_ID": String,
-  "CHALLENGE_TYPE": Integer,
+  "DEVICE_ID": "string",
+  "CHALLENGE_TYPE": 123,
   "RESPONSE_VALUE": "1111",
-  "PAIRING_REQ_TOKEN": Integer
+  "PAIRING_REQ_TOKEN": 123
 }
 ```
 
@@ -123,7 +120,6 @@ Save `DEVICE_ID`, you'll need it for the challenge or to cancel pairing.
 ```
 {
 	"ITEM": {},
-	...
 }
 ```
 
@@ -169,7 +165,6 @@ The HTTP API server turns off when the set is sleeping. Send a WoL magic packet 
 		"FLAT": "TRUE",
 		"HELPTEXT": "FALSE"
 	}
-	...
 }
 ```
 
@@ -185,9 +180,9 @@ The HTTP API server turns off when the set is sleeping. Send a WoL magic packet 
 ```
 {
 	"KEYLIST": [{
-		"CODESET": Integer,
-		"CODE": Integer,
-		"ACTION": String
+		"CODESET": 123,
+		"CODE": 123,
+		"ACTION": "string"
 	}]
 }
 ```
@@ -196,7 +191,7 @@ The HTTP API server turns off when the set is sleeping. Send a WoL magic packet 
 `curl -k -H "Content-Type: application/json" -H "AUTH: 123A456B" -X PUT -d '{"KEYLIST": [{"CODESET": 5,"CODE": 0,"ACTION":"KEYPRESS"}]}' https://myVizioTV:9000/key_command/`
 
 #### Notes
-You can string together long remote actions by adding to the `keylist` array.
+You can string together long remote actions by adding to the `keylist` [].
 
 ### Appendix
 | Action   |
@@ -230,22 +225,22 @@ You can string together long remote actions by adding to the `keylist` array.
 ```
 {
 	"ITEMS": [{
-		"NAME": String,
-		"CNAME": String,
-		"TYPE": String,
-		"VALUE": String,
-		"ENABLED": Boolean,
-		"HASHVAL": Integer
+		"NAME": "string",
+		"CNAME": "string",
+		"TYPE": "string",
+		"VALUE": "string",
+		"ENABLED": true,
+		"HASHVAL": 123
 	}],
-	"NAME": String,
-	"HASHLIST": Array,
-	"GROUP": String,
+	"NAME": "string",
+	"HASHLIST": [],
+	"GROUP": "string",
 	"PARAMETERS": {
-		"HASHONLY": String,
-		"FLAT": String,
-		"HELPTEXT": String
+		"HASHONLY": "string",
+		"FLAT": "string",
+		"HELPTEXT": "string"
 	},
-	...
+	
 }
 ```
 
@@ -261,27 +256,27 @@ You can string together long remote actions by adding to the `keylist` array.
 ```
 {
 	"ITEMS": [{
-		"NAME": String,
-		"CNAME": String,
-		"TYPE": String,
+		"NAME": "string",
+		"CNAME": "string",
+		"TYPE": "string",
 		"VALUE": {
-			"NAME": String,
-			"METADATA": String
+			"NAME": "string",
+			"METADATA": "string"
 		},
-		"ENABLED": Boolean,
-		"HASHVAL": Integer
+		"ENABLED": true,
+		"HASHVAL": 123
 	},
-	...
+	
 	],
-	"NAME": String,
-	"HASHLIST": Array,
-	"GROUP": String,
+	"NAME": "string",
+	"HASHLIST": [],
+	"GROUP": "string",
 	"PARAMETERS": {
-		"HASHONLY": String,
-		"FLAT": String,
-		"HELPTEXT": String
+		"HASHONLY": "string",
+		"FLAT": "string",
+		"HELPTEXT": "string"
 	},
-	...
+	
 }
 ```
 
@@ -297,8 +292,8 @@ You can string together long remote actions by adding to the `keylist` array.
 ```
 {
 	"REQUEST": "MODIFY",
-	"VALUE": String,
-	"HASHVAL": Integer
+	"VALUE": "string",
+	"HASHVAL": 123
 }
 ```
 
@@ -323,9 +318,9 @@ Note: The hashvalue is from the current input, not the list of inputs.
 ```
 {
 	"VALUE": {
-		"MESSAGE": String,
-		"NAME_SPACE": Integer,
-		"APP_ID": String
+		"MESSAGE": "string",
+		"NAME_SPACE": 123,
+		"APP_ID": "string"
 	}
 }
 ```
@@ -342,25 +337,25 @@ Note: The hashvalue is from the current input, not the list of inputs.
 ```
 {
 	"ITEMS": [{
-		"NAME": String,
-		"CNAME": String,
-		"TYPE": String,
-		"VALUE": String,
-		"ENABLED": Boolean,
-		"HASHVAL": Int,
-		"ELEMENTS": Array
+		"NAME": "string",
+		"CNAME": "string",
+		"TYPE": "string",
+		"VALUE": "string",
+		"ENABLED": true,
+		"HASHVAL": 123,
+		"ELEMENTS": []
 	},
-	...
+	
 	],
-	"NAME": String,
-	"HASHLIST": Array,
-	"GROUP": String,
+	"NAME": "string",
+	"HASHLIST": [],
+	"GROUP": "string",
 	"PARAMETERS": {
-		"HASHONLY": String,
-		"FLAT": String,
-		"HELPTEXT": String
+		"HASHONLY": "string",
+		"FLAT": "string",
+		"HELPTEXT": "string"
 	},
-	...
+	
 }
 ```
 
@@ -381,8 +376,8 @@ Note: The hashvalue is from the current input, not the list of inputs.
 ```
 {
 	"REQUEST": "MODIFY",
-	"HASHVAL": Integer,
-	"VALUE": String/Integer/Boolean
+	"HASHVAL": 123,
+	"VALUE": string/Integer/true
 }
 ```
 
